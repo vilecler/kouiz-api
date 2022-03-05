@@ -3,7 +3,7 @@ const dynamo = new AWS.DynamoDB.DocumentClient();
 
 module.exports.handler = async (event) => {
   console.log('Event: ', event);
-  let responseMessage = 'Hello, World!';
+  let responseMessage = 'Hello, World! This is a test.';
 
   return {
     statusCode: 200,
