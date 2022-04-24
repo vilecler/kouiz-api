@@ -15,12 +15,9 @@ const clientPromise = client.connect();
 
 module.exports.handler = async (event) => {
   console.log('Event: ', event);
-<<<<<<< Updated upstream
-  let responseMessage = 'Hello, World! I am Vivien ;).';
-=======
+
   const client = await clientPromise;
   let responseMessage = 'Hello, World! I am Vivien ' + client.db().databaseName + ' ;).';
->>>>>>> Stashed changes
 
   return {
     statusCode: 200,
