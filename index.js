@@ -9,15 +9,15 @@ MONGODB_CONNECTION_STRING.password = encodeURIComponent(process.env.AWS_SECRET_A
 MONGODB_CONNECTION_STRING.searchParams.set('authSource', '$external');
 MONGODB_CONNECTION_STRING.searchParams.set('authMechanism', 'AWS_SESSION_TOKEN:' + encodeURIComponent(process.env.AWS_SESSION_TOKEN));
 
-let client = new MongoClient(MONGODB_CONNECTION_STRING.toString(), { useNewUrlParser: true, useUnifiedTopology: true });
-const clientPromise = client.connect();
+//let client = new MongoClient(MONGODB_CONNECTION_STRING.toString(), { useNewUrlParser: true, useUnifiedTopology: true });
+//const clientPromise = client.connect();
 /* End configuring mongodb */
 
 module.exports.handler = async (event) => {
   console.log('Event: ', event);
 
-  const client = await clientPromise;
-  let responseMessage = 'Hello, World! I am Vivien ' + client.db().databaseName + ' ;).';
+  //const client = await clientPromise;
+  let responseMessage = MONGODB_CONNECTION_STRING.toString() + '\n' + process.env.MONGODB_URI + '\n' + process.env.AWS_ACCESS_KEY_ID + '\n' + process.env.AWS_SECRET_ACCESS_KEY + '\n' + process.env.AWS_SESSION_TOKEN;
 
   return {
     statusCode: 200,
