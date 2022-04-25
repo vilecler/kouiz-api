@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/vilecler/kouiz-api/issues"
   },
-  "homepage": "https://github.com/vilecler/kouiz-api#readme"
+  "homepage": "https://github.com/vilecler/kouiz-api#readme",
+  "dependencies": {
+    "mongodb": "^4.5.0"
+  }
 }
