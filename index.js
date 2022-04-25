@@ -7,7 +7,6 @@ const { MONGODB_CONNECTION_STRING, MONGODB_DATABASE } = require('./config/consta
 module.exports.handler = async (event) => {
   console.log('Event: ', event);
 
-  const client = await clientPromise;
   let responseMessage = 'Testing Database connection :) ' + MONGODB_CONNECTION_STRING;
 
   return {
