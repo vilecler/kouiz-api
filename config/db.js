@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-const { MONGODB_CONNECTION_STRING, MONGODB_DATABASE } = require('constants');
+const { MONGODB_CONNECTION_STRING, MONGODB_DATABASE } = require('./constants');
 
 const client = new MongoClient(MONGODB_CONNECTION_STRING, {
   useNewUrlParser: true,
@@ -16,7 +16,6 @@ let dbConnection = async () => {
     console.error(error);
   }
 };
-
 
 module.exports = {
   getDatabaseConnection: function () {
