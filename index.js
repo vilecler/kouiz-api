@@ -5,7 +5,7 @@ const dbo = require("./config/db");
 module.exports.handler = async (event) => {
   console.log('Event: ', event);
 
-  let responseMessage = 'Testing Database connection :) ' + dbo.getDatabaseConnection().databaseName;
+  let responseMessage = 'Testing Database connection :) ' + dbo.getDatabaseConnection().getName();
 
   return {
     statusCode: 200,
