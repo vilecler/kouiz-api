@@ -2,12 +2,10 @@ const AWS = require("aws-sdk");
 //const env = require("./config/env");
 const dbo = require("./config/db");
 
-const { MONGODB_CONNECTION_STRING, MONGODB_DATABASE } = require('./config/constants');
-
 module.exports.handler = async (event) => {
   console.log('Event: ', event);
 
-  let responseMessage = 'Testing Database connection :) ' + MONGODB_CONNECTION_STRING;
+  let responseMessage = 'Testing Database connection :) ' + dbo.getDatabaseConnection().databaseName;
 
   return {
     statusCode: 200,
