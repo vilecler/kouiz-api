@@ -27,7 +27,7 @@ export const loadRoutingItems = () => {
 
 export const resolveRoute = (event: APIGatewayEvent, context: Context) => {
 
-  for (let route of loadRoutingItems()) {
+  for (let route in loadRoutingItems()) {
 
     console.log("EROIEREZREZ");
     console.log(route);
