@@ -9,11 +9,14 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
 
     const database: Db = await connectToDatabase();
 
+    console.log(event);
+
     return {
         statusCode: 200,
         body: JSON.stringify({
-            message: 'hello world',
+            event
         }),
+        key: event.routeKey
     };
 };
 
