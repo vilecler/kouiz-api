@@ -17,7 +17,7 @@ export const loadRoutingItems = () => {
   let routingItems = [];
 
   //Append all routes here
-  routingItems.push(categoryRoutes);
+  routingItems = routingItems.concat(categoryRoutes);
 
   console.log("Routes:");
   console.log(routingItems);
@@ -28,15 +28,12 @@ export const loadRoutingItems = () => {
 
 export const resolveRoute = (event: APIGatewayEvent, context: Context) => {
 
-  let routes = loadRoutingItems()
-
-  for (let i = 0; i < routes.length; i++) {
-
+  for (let route in loadRoutingItems()) {
     console.log("Route");
-    console.log(routes[i]);
+    console.log(route);
 
-    if (routes[i].method == event.httpMethod && routes[i].pattern.match(event.path)) {
-      return routes[i].handler(
+    if (route.method == event.httpMethod && route.pattern.match(event.path)) {
+      return route.handler(
         route.pattern.match(event.path),
         event,
         context
