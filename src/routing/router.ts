@@ -5,6 +5,7 @@ import { RoutingItem } from "./routingitem";
 
 //Load more routes here
 import { categoryRoutes } from './category';
+import { themeRoutes } from './theme';
 
 
 let cacheRoutingItems: any;
@@ -18,6 +19,7 @@ export const loadRoutingItems = () => {
 
   //Append all routes here
   routingItems = routingItems.concat(categoryRoutes);
+  routingItems = routingItems.concat(themeRoutes);
 
 
   cacheRoutingItems = routingItems;

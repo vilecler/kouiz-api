@@ -40,7 +40,7 @@ export const getCategoriesHandler = async (parameters: any, event: APIGatewayEve
     const query = (isHidden) ? {} : {isHidden: false};  //By default hidden categories are not visible unless isHidden falcutative parameter is used.
     const categories = (await database.collection(CATEGORY_COLLECTION).find(query).toArray()) as Category[];
 
-    if (!categories){
+    if (categories.length == 0){
       return Responses.generateNoObjectFound('Categories');
     }
 
