@@ -1,6 +1,8 @@
 import { Context, APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda';
 import { MongoClient, Db } from 'mongodb';
 
+import { getCategoryHandler } from './category';
+
 import { connectToDatabase } from "../services/db";
 
 const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> => {
@@ -9,9 +11,9 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
 
     const database: Db = await connectToDatabase();
 
-    event.routeKey = event.httpMethod + " " + event.path;
+    let routeKey: string = event.httpMethod + " " + event.path;
 
-    switch(event.path){
+    switch(routeKey){
       case 'GET /category':
         return await getCategoryHandler(event);
         break;
