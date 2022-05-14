@@ -1,8 +1,9 @@
-// @ts-nocheck
 import { APIGatewayProxyResult, APIGatewayEvent, Context } from 'aws-lambda';
+import { Db } from 'mongodb';
+
 import { RoutingItem } from "./routingitem";
 
-
+//Load more routes here
 import { categoryRoutes } from './category';
 
 
@@ -10,40 +11,29 @@ let cacheRoutingItems: any;
 
 export const loadRoutingItems = () => {
   if(cacheRoutingItems){
-    console.log("cached");
     return cacheRoutingItems;
   }
 
-  let routingItems = [];
+  let routingItems = Array<RoutingItem>();
 
   //Append all routes here
   routingItems = routingItems.concat(categoryRoutes);
 
-  console.log("Routes:");
-  console.log(routingItems);
 
   cacheRoutingItems = routingItems;
   return routingItems;
 };
 
-export const resolveRoute = async (event: APIGatewayEvent, context: Context) : Promise<APIGatewayProxyResult> => {
+export const resolveRoute = async (event: APIGatewayEvent, context: Context, database: Db) : Promise<APIGatewayProxyResult> => {
 
   for (let route of loadRoutingItems()) {
-    console.log("Route");
-    console.log(route);
-    console.log("Method " + route.method + " " + event.httpMethod);
-    console.log("Pat " + route.pattern + " " + event.path);
-    console.log(route.method == event.httpMethod);
-    console.log(route.pattern.match(event.path));
-
     if (route.method == event.httpMethod && route.pattern.match(event.path)) {
-      console.log("wtf");
       return await route.handler(
         route.pattern.match(event.path),
         event,
-        context
+        context,
+        database
       );
-      break;
     }
   }
 
