@@ -28,13 +28,15 @@ export const loadRoutingItems = () => {
 
 export const resolveRoute = (event: APIGatewayEvent, context: Context) => {
 
-  for (let route in loadRoutingItems()) {
+  let routes = loadRoutingItems()
+
+  for (let i = 0; i < routes.length; i++) {
 
     console.log("Route");
-    console.log(route);
+    console.log(routes[i]);
 
-    if (route.method == event.httpMethod && route.pattern.match(event.path)) {
-      return route.handler(
+    if (routes[i].method == event.httpMethod && routes[i].pattern.match(event.path)) {
+      return routes[i].handler(
         route.pattern.match(event.path),
         event,
         context
