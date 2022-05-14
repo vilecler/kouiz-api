@@ -7,14 +7,7 @@ import { resolveRoute } from "../routing/router";
 const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> => {
     const database: Db = await connectToDatabase();
 
-    await resolveRoute(event, context);
-
-    return {
-      statusCode: 404,
-      body: JSON.stringify({
-          message: 'Ressource not found.'
-      }),
-    };
+    return await resolveRoute(event, context);
 };
 
 export default handler;
