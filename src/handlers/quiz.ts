@@ -8,6 +8,8 @@ import { Responses } from "../utils/responses";
 
 const QUIZ_COLLECTION = "quizzes";
 
+// TODO: HIDE Questions while sending quiz
+
 export const getQuizHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
   if(!parameters.link){
     return Responses.generateMissingParameter("link");

@@ -21,7 +21,7 @@ export class Quiz implements TimedObject{
     public langsAvailable: Array<Lang>,
 
     public questionsCount: number = 0,
-    public questions: Array<Question>,
+    public questions: Array<ObjectId>,  //Link to the questions
     public durationBetweenQuestions: number,
 
     public experience: Experience,

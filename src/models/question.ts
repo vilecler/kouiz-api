@@ -1,3 +1,6 @@
+import { ObjectId, Timestamp } from 'mongodb';
+import { MongoDBObject } from './interfaces/mongodbobject';
+
 import { Answer } from "./answer";
 import { Translations } from './translations';
 
@@ -19,6 +22,8 @@ export class Question {
 
     public imageSrc?: string, //Image is not mandatory
     public propositions?: Array<Translations>, //Depending on the QuestionType some propositions can be displayed or not
+
+    public _id?: ObjectId
   ){ }
 
 };
