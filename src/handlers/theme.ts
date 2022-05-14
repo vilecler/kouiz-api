@@ -13,8 +13,10 @@ export const getThemeHandler = async (parameters: any, event: APIGatewayEvent, c
   }
 
   try {
-    const query = { code: parameters.code };
-    const theme = (await database.collection(THEME_COLLECTION).findOne(query)) as Theme;
+    const query = new Query();
+    query.addField("code": parameters.code);
+
+    const theme = (await database.collection(THEME_COLLECTION).findOne(query.q)) as Theme;
 
     if (!theme){
       return Responses.generateNoObjectFound('Theme');
@@ -31,9 +33,9 @@ export const getThemeHandler = async (parameters: any, event: APIGatewayEvent, c
 
 export const getThemesHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
   //Retrieve falcutative parameter
-  let isHidden: boolean = false;
-  if (event?.queryStringParameters?.isHidden){
-    isHidden = Boolean(event!.queryStringParameters!.isHidden);
+  let displayHidden: boolean = false;
+  if (event?.queryStringParameters?.displayHidden){
+    displayHidden = Boolean(event!.queryStringParameters!.displayHidden);
   }
 
   if(!parameters.category){
@@ -41,8 +43,13 @@ export const getThemesHandler = async (parameters: any, event: APIGatewayEvent, 
   }
 
   try{
-    const query = (isHidden) ? {category: parameters.category} : {isHidden: false, category: parameters.category};
-    const themes = (await database.collection(THEME_COLLECTION).find(query).toArray()) as Theme[];
+    const query = new Query();
+    query.addField("category": parameters.category);
+
+    if(displayHidden){ //By default hidden categories are not visible unless isHidden falcutative parameter is used.
+      query.displayHiddenResult();
+    }
+    const themes = (await database.collection(THEME_COLLECTION).find(query.q).toArray()) as Theme[];
 
     if (themes.length == 0 ){
       return Responses.generateNoObjectFound('Themes');

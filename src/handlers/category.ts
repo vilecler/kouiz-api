@@ -33,15 +33,18 @@ export const getCategoryHandler = async (parameters: any, event: APIGatewayEvent
 
 
 export const getCategoriesHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
-  //Retrieve falcutative parameter
-  let isHidden: boolean = false;
-  if (event?.queryStringParameters?.isHidden){
-    isHidden = Boolean(event!.queryStringParameters!.isHidden);
+  let displayHidden: boolean = false;
+  if (event?.queryStringParameters?.displayHidden){
+    displayHidden = Boolean(event!.queryStringParameters!.displayHidden);
   }
 
   try{
-    const query = (isHidden) ? {} : {isHidden: false};  //By default hidden categories are not visible unless isHidden falcutative parameter is used.
-    const categories = (await database.collection(CATEGORY_COLLECTION).find(query).toArray()) as Category[];
+    const query = new Query();
+    if(displayHidden){ //By default hidden categories are not visible unless isHidden falcutative parameter is used.
+      query.displayHiddenResult();
+    }
+
+    const categories = (await database.collection(CATEGORY_COLLECTION).find(query.q).toArray()) as Category[];
 
     if (categories.length == 0){
       return Responses.generateNoObjectFound('Categories');
