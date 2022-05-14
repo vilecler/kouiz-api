@@ -3,6 +3,7 @@ import { Db } from 'mongodb';
 
 import { Category } from "../models/category";
 
+import { Query } from '../utils/query'
 import { Responses } from "../utils/responses";
 
 const CATEGORY_COLLECTION = "categories";
@@ -13,8 +14,10 @@ export const getCategoryHandler = async (parameters: any, event: APIGatewayEvent
   }
 
   try {
-    const query = { code: parameters.code };
-    const category = (await database.collection(CATEGORY_COLLECTION).findOne(query)) as Category;
+    const query = new Query();
+    query.addField("code", parameters.code);
+
+    const category = (await database.collection(CATEGORY_COLLECTION).findOne(query.q)) as Category;
 
     if (!category){
       return Responses.generateNoObjectFound('Category');
