@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { APIGatewayProxyResult, APIGatewayEvent, Context } from 'aws-lambda';
 import { RoutingItem } from "./routingitem";
 
@@ -28,13 +29,6 @@ export const loadRoutingItems = () => {
 export const resolveRoute = (event: APIGatewayEvent, context: Context) => {
 
   for (let route in loadRoutingItems()) {
-
-    console.log("EROIEREZREZ");
-    console.log(route);
-    console.log("Methode " + route.method + "  " + event.httpMethod);
-    console.log("pat" + event.path + " " + route.pattern);
-    console.log(route.pattern.match(event.path));
-    console.log((route.method == event.httpMethod && route.pattern.match(event.path)))
 
     if (route.method == event.httpMethod && route.pattern.match(event.path)) {
       return route.handler(
