@@ -3,16 +3,13 @@ import { Db } from 'mongodb';
 
 import { Category } from "../models/category";
 
+import { Responses } from "../utils/responses";
+
 const CATEGORY_COLLECTION = "categories";
 
 export const getCategoryHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
   if(!parameters.code){
-    return {
-      statusCode: 400,
-      body: JSON.stringify({
-          message: 'Code is missing.'
-      })
-    };
+    return Responses.generateMissingParameter("code");
   }
 
   try {
@@ -20,28 +17,13 @@ export const getCategoryHandler = async (parameters: any, event: APIGatewayEvent
     const category = (await database.collection(CATEGORY_COLLECTION).findOne(query)) as Category;
 
     if (!category){
-      return {
-        statusCode: 404,
-        body: JSON.stringify({
-            message: 'Category not found.'
-        })
-      };
+      return Responses.generateNoObjectFound('Category');
     }
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-          category: category
-      })
-    };
+    return Responses.generateSuccess(category);
 
   } catch(error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-          message: 'Unable to find any category. Id used is: ' + parameters.code
-      })
-    };
+    return Responses.generateError("Category", 'Code', parameters.code);
   }
 
 };
@@ -59,29 +41,13 @@ export const getCategoriesHandler = async (parameters: any, event: APIGatewayEve
     const categories = (await database.collection(CATEGORY_COLLECTION).find(query).toArray()) as Category[];
 
     if (!categories){
-      return {
-        statusCode: 404,
-        body: JSON.stringify({
-            message: 'Categories not found.'
-        })
-      };
+      return Responses.generateNoObjectFound('Categories');
     }
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-          categories: categories
-      })
-    };
+    return Responses.generateSuccess(categories);
 
   } catch(error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        message: 'Unable to find categories.',
-        error: error
-      })
-    };
+    return Responses.generateError("Categories");
   }
 
 };
