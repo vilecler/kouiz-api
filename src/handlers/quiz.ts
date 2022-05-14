@@ -3,6 +3,7 @@ import { Db } from 'mongodb';
 
 import { Quiz } from "../models/quiz";
 
+import { Query } from "../utils/query";
 import { Responses } from "../utils/responses";
 
 const QUIZ_COLLECTION = "quizzes";
@@ -13,7 +14,9 @@ export const getQuizHandler = async (parameters: any, event: APIGatewayEvent, co
   }
 
   try {
-    const query = { link: parameters.link};
+    const query = new Query();
+    query.addField("link", parameters.link)
+
     const quiz = (await database.collection(QUIZ_COLLECTION).findOne(query)) as Quiz;
 
     if (!quiz){
@@ -42,7 +45,7 @@ export const getQuizzesByCodeHandler = async (parameters: any, event: APIGateway
 
   try{
     const query = new Query();
-    query.addField("code": parameters.code)
+    query.addField("code", parameters.code)
     if(displayHidden){ //By default hidden categories are not visible unless isHidden falcutative parameter is used.
       query.displayHiddenResult();
     }
@@ -74,11 +77,11 @@ export const getQuizzesByThemeHandler = async (parameters: any, event: APIGatewa
 
   try{
     const query = new Query();
-    query.addField("theme": parameters.theme)
-
+    query.addField("theme", parameters.theme)
     if(displayHidden){ //By default hidden categories are not visible unless isHidden falcutative parameter is used.
       query.displayHiddenResult();
     }
+
     const quizzes = (await database.collection(QUIZ_COLLECTION).find(query.q).toArray()) as Quiz[];
 
     if (quizzes.length == 0 ){

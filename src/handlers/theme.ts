@@ -3,6 +3,7 @@ import { Db } from 'mongodb';
 
 import { Theme } from "../models/theme";
 
+import { Query } from "../utils/query";
 import { Responses } from "../utils/responses";
 
 const THEME_COLLECTION = "themes";
@@ -14,7 +15,7 @@ export const getThemeHandler = async (parameters: any, event: APIGatewayEvent, c
 
   try {
     const query = new Query();
-    query.addField("code": parameters.code);
+    query.addField("code", parameters.code);
 
     const theme = (await database.collection(THEME_COLLECTION).findOne(query.q)) as Theme;
 
@@ -44,7 +45,7 @@ export const getThemesHandler = async (parameters: any, event: APIGatewayEvent, 
 
   try{
     const query = new Query();
-    query.addField("category": parameters.category);
+    query.addField("category", parameters.category);
 
     if(displayHidden){ //By default hidden categories are not visible unless isHidden falcutative parameter is used.
       query.displayHiddenResult();
