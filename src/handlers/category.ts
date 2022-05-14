@@ -23,7 +23,7 @@ export const getCategoryHandler = async (parameters: any, event: APIGatewayEvent
       return {
         statusCode: 404,
         body: JSON.stringify({
-            message: 'Cateogory not found.'
+            message: 'Category not found.'
         })
       };
     }
@@ -52,7 +52,7 @@ export const getCategoriesHandler = async (parameters: any, event: APIGatewayEve
 
   //Retrieve falcutative parameter
   let isHidden: boolean = false;
-  if (event!.queryStringParameters!.isHidden){
+  if (event?.queryStringParameters?.isHidden){
     isHidden = Boolean(event!.queryStringParameters!.isHidden);
   }
 
@@ -64,7 +64,7 @@ export const getCategoriesHandler = async (parameters: any, event: APIGatewayEve
       return {
         statusCode: 404,
         body: JSON.stringify({
-            message: 'Cateogories not found.'
+            message: 'Categories not found.'
         })
       };
     }
