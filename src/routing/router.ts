@@ -37,6 +37,7 @@ export const resolveRoute = (event: APIGatewayEvent, context: Context) => {
     console.log(route.pattern.match(event.path));
 
     if (route.method == event.httpMethod && route.pattern.match(event.path)) {
+      console.log("wtf");
       return route.handler(
         route.pattern.match(event.path),
         event,
