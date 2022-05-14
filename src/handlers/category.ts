@@ -39,7 +39,7 @@ export const getCategoryHandler = async (parameters: any, event: APIGatewayEvent
     return {
       statusCode: 500,
       body: JSON.stringify({
-          message: 'Unable to find any category. Id used is: ' + parameters.id
+          message: 'Unable to find any category. Id used is: ' + parameters.code
       })
     };
   }
