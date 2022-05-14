@@ -3,7 +3,7 @@ import { MongoClient, Db } from 'mongodb';
 
 import { connectToDatabase } from "../services/db";
 
-export const indexHandler = async (event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> => {
+export const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> => {
     console.log(`Event: ${JSON.stringify(event, null, 2)}`);
     console.log(`Context: ${JSON.stringify(context, null, 2)}`);
 
