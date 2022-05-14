@@ -3,7 +3,7 @@ import { Db } from 'mongodb';
 
 import { Category } from "../models/category";
 
-const CATEGORY_COLLECTION = "category";
+const CATEGORY_COLLECTION = "categories";
 
 export const getCategoryHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
   if(!parameters.code){
