@@ -11,8 +11,12 @@ export async function connectToDatabase(): Promise<Db> {
   console.log('AppSettings.MONGODB_CONNECTION_STRING ' + AppSettings.MONGODB_CONNECTION_STRING);
   console.log('AppSettings.MONGODB_DATABASE ' + AppSettings.MONGODB_DATABASE);
 
-  const client: MongoClient = await MongoClient.connect(AppSettings.MONGODB_CONNECTION_STRING);
-  const db: Db = await client.db(AppSettings.MONGODB_DATABASE);
+  try{
+    const client: MongoClient = await MongoClient.connect(AppSettings.MONGODB_CONNECTION_STRING);
+    const db: Db = await client.db(AppSettings.MONGODB_DATABASE);
+  } catch(error) {
+    console.log(error);
+  }
 
   cachedDb = db;
   return db;
