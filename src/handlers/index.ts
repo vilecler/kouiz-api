@@ -9,13 +9,19 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
 
     const database: Db = await connectToDatabase();
 
-    console.log(event);
+    event.routeKey = event.httpMethod + " " + event.path;
+
+    switch(event.path){
+      case 'GET /category':
+        return await getCategoryHandler(event);
+        break;
+    }
 
     return {
-        statusCode: 200,
-        body: JSON.stringify({
-            event: event
-        }),        
+      statusCode: 404,
+      body: JSON.stringify({
+          message: 'Ressource not found.'
+      }),
     };
 };
 
