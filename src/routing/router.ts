@@ -29,6 +29,11 @@ export const resolveRoute = (event: APIGatewayEvent, context: Context) => {
 
   for (let route of loadRoutingItems()) {
 
+    console.log("Methode " + route.method + "  " + event.httpMethod);
+    console.log("pat" + event.path + " " + route.pattern);
+    console.log(route.pattern.match(event.path));
+    console.log((route.method == event.httpMethod && route.pattern.match(event.path)))
+
     if (route.method == event.httpMethod && route.pattern.match(event.path)) {
       return route.handler(
         route.pattern.match(event.path),
