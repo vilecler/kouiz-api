@@ -14,9 +14,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
     return {
         statusCode: 200,
         body: JSON.stringify({
-            event
-        }),
-        key: event.routeKey
+            event: event
+        }),        
     };
 };
 
