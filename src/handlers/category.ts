@@ -48,6 +48,8 @@ export const getCategoryHandler = async (parameters: any, event: APIGatewayEvent
 
 
 export const getCategoriesHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
+  console.log(event);
+
   //Retrieve falcutative parameter
   let isHidden: boolean = false;
   if (event!.queryStringParameters!.isHidden){
