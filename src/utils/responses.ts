@@ -17,7 +17,7 @@ export class Responses{
     return {
       statusCode: 404,
       body: JSON.stringify({
-          message: 'No ' + capitalizeFirstLetter(objectName) + ' found.'
+          message: 'No ' + objectName.toLowerCase() + ' found.'
       })
     };
   }
