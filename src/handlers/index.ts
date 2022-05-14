@@ -14,9 +14,10 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
     let routeKey: string = event.httpMethod + " " + event.path;
 
     switch(routeKey){
-      case 'GET /category':
-        return await getCategoryHandler(event);
+      case 'GET /categories':
+        return await getCategoryHandler(event, context);
         break;
+
     }
 
     return {
