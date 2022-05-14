@@ -26,7 +26,7 @@ export const loadRoutingItems = () => {
   return routingItems;
 };
 
-export const resolveRoute = (event: APIGatewayEvent, context: Context) => {
+export const resolveRoute = async (event: APIGatewayEvent, context: Context) : Promise<APIGatewayProxyResult> => {
 
   for (let route of loadRoutingItems()) {
     console.log("Route");
@@ -47,4 +47,10 @@ export const resolveRoute = (event: APIGatewayEvent, context: Context) => {
     }
   }
 
+  return {
+    statusCode: 404,
+    body: JSON.stringify({
+        message: 'Ressource not found.'
+    }),
+  };
 };
