@@ -3,4 +3,6 @@ require('dotenv').config();
 
 //Bind handler
 const handler = require("./dist/handlers/index");
-module.exports.handler = handler;
+module.exports.handler = handler.default;
+
+console.log(handler.default);
