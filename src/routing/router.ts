@@ -9,6 +9,7 @@ let cacheRoutingItems: Array<RoutingItem>;
 
 export const loadRoutingItems = (): Array<RoutingItem> => {
   if(cacheRoutingItems){
+    console.log("cached");
     return cacheRoutingItems;
   }
 
@@ -16,6 +17,9 @@ export const loadRoutingItems = (): Array<RoutingItem> => {
 
   //Append all routes here
   routingItems.concat(getCategoryRoutes());
+
+  console.log("Routes:");
+  console.log(routingItems);
 
   cacheRoutingItems = routingItems;
   return routingItems;
