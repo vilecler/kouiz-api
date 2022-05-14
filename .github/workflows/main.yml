@@ -13,17 +13,22 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install and build
+      - name: npm install and compile and build
         run: |
           npm ci
+          npm run compile
           npm run build --if-present
         env:
           CI: true
-      - name: zip
+      - name: Remove Typescript Files (to not upload to AWS)
+        uses: JesseTG/rm@v1.0.2
+        with:
+          path: /src
+      - name: Create zip archive
         uses: montudor/action-zip@v0.1.0
         with:
           args: zip -qq -r ./bundle.zip ./
-      - name: default deploy
+      - name: Send zip to AWS
         uses: appleboy/lambda-action@master
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}

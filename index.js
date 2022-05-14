@@ -1,4 +1,4 @@
-const AWS = require("aws-sdk");
+/*const AWS = require("aws-sdk");
 //const env = require("./config/env");
 const clientPromise = require("./config/db");
 
@@ -17,4 +17,4 @@ module.exports.handler = async (event) => {
       message: responseMessage,
     }),
   }
-}
+}*/
