@@ -1,8 +1,8 @@
 import { APIGatewayProxyResult, APIGatewayEvent, Context } from 'aws-lambda';
 
-export const getCategoryHandler = async (event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> => {
+export const getCategoryHandler = async (parameters: any, event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> => {
 
-  
+
 
   return {
     statusCode: 200,
