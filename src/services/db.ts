@@ -14,10 +14,14 @@ export async function connectToDatabase(): Promise<Db> {
   try{
     const client: MongoClient = await MongoClient.connect(AppSettings.MONGODB_CONNECTION_STRING);
     const db: Db = await client.db(AppSettings.MONGODB_DATABASE);
+
+
+    cachedDb = db;
+    return db;
+
   } catch(error) {
     console.log(error);
   }
 
-  cachedDb = db;
-  return db;
+  return cachedDb;
 }
