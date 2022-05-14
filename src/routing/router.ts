@@ -2,7 +2,7 @@ import { APIGatewayProxyResult, APIGatewayEvent, Context } from 'aws-lambda';
 import { RoutingItem } from "./routingitem";
 
 
-import { getCategoryRoutes } from './category';
+import { cetegoryRoutes } from './category';
 
 
 let cacheRoutingItems: Array<RoutingItem>;
@@ -16,7 +16,7 @@ export const loadRoutingItems = (): Array<RoutingItem> => {
   let routingItems: Array<RoutingItem> = [];
 
   //Append all routes here
-  routingItems.concat(getCategoryRoutes());
+  routingItems.push(cetegoryRoutes);
 
   console.log("Routes:");
   console.log(routingItems);
