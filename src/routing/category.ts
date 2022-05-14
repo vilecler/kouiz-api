@@ -7,4 +7,3 @@ export const categoryRoutes = [
   new RoutingItem(HTTPMethods.Get, new UrlPattern('/categories/:id'), getCategoryHandler),
   new RoutingItem(HTTPMethods.Get, new UrlPattern('/categories'), getCategoriesHandler),
 ];
-q
