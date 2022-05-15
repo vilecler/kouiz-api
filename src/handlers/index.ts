@@ -10,7 +10,7 @@ import { Lang, Translations } from '../models/translations';
 const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> => {
     const database: Db = await connectToDatabase();
 
-    let categories = Array<Category>[
+    let categories = [
       new Category(
         "astronomy",
         {
@@ -188,6 +188,7 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
         new Date(Date.now())
       ),
     ];
+
     await database.collection("categories").insertMany(categories);
 
     return await resolveRoute(event, context, database);
