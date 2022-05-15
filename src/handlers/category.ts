@@ -16,6 +16,7 @@ export const getCategoryHandler = async (parameters: any, event: APIGatewayEvent
   try {
     const query = new Query();
     query.addField("code", parameters.code);
+    query.displayHiddenResult();  //Always display even if hidden because this is a direct link
 
     const category = (await database.collection(CATEGORY_COLLECTION).findOne(query.q)) as Category;
 

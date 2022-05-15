@@ -15,7 +15,8 @@ export const getQuizHandler = async (parameters: any, event: APIGatewayEvent, co
 
   try {
     const query = new Query();
-    query.addField("link", parameters.link)
+    query.addField("link", parameters.link);
+    query.displayHiddenResult();  //Always display even if hidden because this is a direct link
 
     const quiz = (await database.collection(QUIZ_COLLECTION).findOne(query.q)) as Quiz;
 

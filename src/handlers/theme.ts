@@ -16,6 +16,7 @@ export const getThemeHandler = async (parameters: any, event: APIGatewayEvent, c
   try {
     const query = new Query();
     query.addField("code", parameters.code);
+    query.displayHiddenResult();  //Always display even if hidden because this is a direct link
 
     const theme = (await database.collection(THEME_COLLECTION).findOne(query.q)) as Theme;
 
