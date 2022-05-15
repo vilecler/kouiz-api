@@ -1,7 +1,7 @@
 export class Experience{
 
   constructor(
-    public required: number,
+    public required: number = 0,
     public winnable: number
   ) { }
 

@@ -20,7 +20,6 @@ export class Quiz implements TimedObject{
     public isPremium: boolean,
     public langsAvailable: Array<Lang>,
 
-    public questionsCount: number = 0,
     public questions: Array<ObjectId>,  //Link to the questions
     public durationBetweenQuestions: number,
 
@@ -29,13 +28,14 @@ export class Quiz implements TimedObject{
 
     public createdAt: Date,
     public isHidden: boolean = false,
+    public questionsCount: number = 0,
 
-    public _id?: ObjectId,
     public theme?: string,   //undefined when the quiz is a community quiz.
     public themePosition?: string, // little label for the position of the quiz within the theme if exists.
     public creator?: User,//creator is defined when it is a community quiz only
 
-    public deletedAt?: Date
+    public deletedAt?: Date,
+    public _id?: ObjectId,
   ) { }
 
 }
