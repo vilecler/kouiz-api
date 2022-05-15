@@ -1,4 +1,4 @@
-import { ObjectId, Timestamp } from "mongodb";
+import { ObjectId } from "mongodb";
 
 import { Category } from './category';
 import { TimedObject } from './interfaces/timedobject';
@@ -19,12 +19,12 @@ export class Theme implements TimedObject{
 
     public quizCount: number = 0,
 
-    public createdAt: Timestamp,
+    public createdAt: Date,
     public isHidden: boolean = false,
 
     public _id?: ObjectId,
 
-    public deletedAt?: Timestamp,
+    public deletedAt?: Date,
   ){ }
 
 }

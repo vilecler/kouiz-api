@@ -1,9 +1,7 @@
-import { Timestamp } from 'mongodb';
-
 import { MongoDBObject } from "./mongodbobject";
 
 export interface TimedObject extends MongoDBObject {
-  createdAt: Timestamp;
+  createdAt: Date;
   isHidden: boolean;
-  deletedAt?: Timestamp;
+  deletedAt?: Date;
 };

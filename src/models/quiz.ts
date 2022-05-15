@@ -1,4 +1,4 @@
-import { ObjectId, Timestamp } from "mongodb";
+import { ObjectId } from "mongodb";
 
 import { TimedObject } from './interfaces/timedobject';
 
@@ -27,7 +27,7 @@ export class Quiz implements TimedObject{
     public experience: Experience,
     public energy: Energy,
 
-    public createdAt: Timestamp,
+    public createdAt: Date,
     public isHidden: boolean = false,
 
     public _id?: ObjectId,
@@ -35,7 +35,7 @@ export class Quiz implements TimedObject{
     public themePosition?: string, // little label for the position of the quiz within the theme if exists.
     public creator?: User,//creator is defined when it is a community quiz only
 
-    public deletedAt?: Timestamp
+    public deletedAt?: Date
   ) { }
 
 }

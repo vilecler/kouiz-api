@@ -1,4 +1,4 @@
-import { ObjectId, Timestamp } from 'mongodb';
+import { ObjectId } from 'mongodb';
 
 import { MongoDBObject } from './interfaces/mongodbobject';
 
@@ -12,8 +12,8 @@ export class ThemeScore implements MongoDBObject {
     public user: User,
     public quizDone: Array<string>,
 
-    public createdAt: Timestamp,
-    public updatedAt: Timestamp,
+    public createdAt: Date,
+    public updatedAt: Date,
     public isHidden: boolean = false,
 
     public _id?: ObjectId

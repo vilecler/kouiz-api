@@ -1,4 +1,4 @@
-import { ObjectId, Timestamp } from "mongodb";
+import { ObjectId } from "mongodb";
 
 import { TimedObject } from './interfaces/timedobject';
 import { Translations } from './translations';
@@ -10,11 +10,11 @@ export class Category implements TimedObject {
 
     public names: Translations,
 
-    public createdAt: Timestamp,
+    public createdAt: Date,
     public isHidden: boolean = false,
 
     public _id?: ObjectId,
-    public deletedAt?: Timestamp,
+    public deletedAt?: Date,
   ) {}
 
 };

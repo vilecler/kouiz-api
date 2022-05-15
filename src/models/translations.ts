@@ -6,7 +6,7 @@ export enum Lang {
   pt = "pt"
 };
 
-export type Translations = Map<Lang, number>;
+export type Translations = Record<string, string>;
 
 // Example:
 // { "fr": "Fromage", "en": "Cheese", "it": "Formaggio"}

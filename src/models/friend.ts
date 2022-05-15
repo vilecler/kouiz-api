@@ -1,4 +1,4 @@
-import { ObjectId, Timestamp } from "mongodb";
+import { ObjectId } from "mongodb";
 
 import { MongoDBObject } from "./interfaces/mongodbobject";
 
@@ -9,11 +9,11 @@ export class Friend implements MongoDBObject{
   constructor(
     public users: Array<User>, //User0 always asks to User1
 
-    public createdAt: Timestamp,
-    public acceptedAt?: Timestamp,
-    public deletedAt?: Timestamp,
+    public createdAt: Date,
+    public acceptedAt?: Date,
+    public deletedAt?: Date,
 
-    public _id?: ObjectId,
+    public _id?: ObjectId
   ){ }
 
 };

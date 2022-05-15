@@ -1,4 +1,4 @@
-import { ObjectId, Timestamp } from 'mongodb';
+import { ObjectId } from 'mongodb';
 
 import { MongoDBObject } from './interfaces/mongodbobject';
 
@@ -21,7 +21,7 @@ export class QuizScore implements MongoDBObject{
 
     public rank: number,
 
-    public createdAt: Timestamp,
+    public createdAt: Date,
 
     //To display faster in history
     public name: Translations,

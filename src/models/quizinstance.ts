@@ -1,4 +1,4 @@
-import { ObjectId, Timestamp } from "mongodb";
+import { ObjectId } from "mongodb";
 
 import { MongoDBObject } from './interfaces/mongodbobject';
 
@@ -32,7 +32,7 @@ export class QuizInstance implements MongoDBObject{
 
     public ranking: Map<ObjectId, number>,
 
-    public createdAt: Timestamp,
+    public createdAt: Date,
 
     public _id?: ObjectId
   ) { }
