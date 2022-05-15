@@ -12,14 +12,13 @@ export class Theme implements TimedObject{
     public color: string,
     public icon: string,
 
-    public categories: Array<Category>,
+    public categories: Array<string>, //codes of category go here
 
     public names: Translations,
     public shortNames: Translations,
 
-    public quizCount: number = 0,
-
     public createdAt: Date,
+    public quizCount: number = 0,
     public isHidden: boolean = false,
 
     public _id?: ObjectId,
