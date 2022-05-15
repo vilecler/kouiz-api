@@ -6,6 +6,7 @@ import { RoutingItem } from "./routingitem";
 //Load more routes here
 import { categoryRoutes } from './category';
 import { themeRoutes } from './theme';
+import { quizRoutes } from './quiz';
 
 
 let cacheRoutingItems: any;
@@ -20,6 +21,7 @@ export const loadRoutingItems = () => {
   //Append all routes here
   routingItems = routingItems.concat(categoryRoutes);
   routingItems = routingItems.concat(themeRoutes);
+  routingItems = routingItems.concat(quizRoutes);
 
 
   cacheRoutingItems = routingItems;

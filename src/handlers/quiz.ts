@@ -28,7 +28,7 @@ export const getQuizHandler = async (parameters: any, event: APIGatewayEvent, co
   } catch(error) {
     return Responses.generateError("Quiz", 'Link', parameters.link);
   }
-  
+
 };
 
 
@@ -91,7 +91,7 @@ export const getQuizzesByThemeHandler = async (parameters: any, event: APIGatewa
     return Responses.generateSuccess(quizzes);
 
   } catch(error) {
-    return Responses.generateError("Quizzes", 'Code', parameters.code);
+    return Responses.generateError("Quizzes", 'Theme', parameters.theme);
   }
 
 };
