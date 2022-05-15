@@ -17,10 +17,10 @@ export const getQuizHandler = async (parameters: any, event: APIGatewayEvent, co
     const query = new Query();
     query.addField("link", parameters.link)
 
-    const quiz = (await database.collection(QUIZ_COLLECTION).findOne(query)) as Quiz;
+    const quiz = (await database.collection(QUIZ_COLLECTION).findOne(query.q)) as Quiz;
 
     if (!quiz){
-      return Responses.generateNoObjectFound('Quiz ' + parameters.link);
+      return Responses.generateNoObjectFound('Quiz');
     }
 
     return Responses.generateSuccess(quiz);
