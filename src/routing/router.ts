@@ -28,8 +28,7 @@ export const loadRoutingItems = () => {
 
 export const resolveRoute = async (event: APIGatewayEvent, context: Context, database: Db) : Promise<APIGatewayProxyResult> => {
 
-  let options = {};
-  options.segmentNameCharset = 'a-zA-Z0-9_-'; //Allow - and _ in value
+  let options = {segmentNameCharset : 'a-zA-Z0-9_-'};//Allow - and _ in value
 
   for (let route of loadRoutingItems()) {
     if (route.method == event.httpMethod && route.pattern.match(event.path, options)) {
