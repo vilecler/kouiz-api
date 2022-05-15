@@ -13,6 +13,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
     let categories = [
       new Category(
         "astronomy",
+        "#7353BA",
+        "meteor",
         {
             'fr': "Astronomie",
             'en': "Astronomy",
@@ -21,6 +23,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "english",
+        "#DA5552",
+        "language",
         {
             'fr': "Anglais",
             'en': "English",
@@ -29,6 +33,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "biology",
+        "#31572C",
+        "dna",
         {
             'fr': "Biologie",
             'en': "Biology",
@@ -37,6 +43,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "chemistry",
+        "#2F195F",
+        "vial",
         {
             'fr': "Chimie",
             'en': "Chemistry",
@@ -45,6 +53,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "movies",
+        "#976391",
+        "video",
         {
             'fr': "Films",
             'en': "Movies",
@@ -53,6 +63,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "cooking",
+        "#F7B538",
+        "ustensils",
         {
             'fr': "Cuisine",
             'en': "Cooking",
@@ -61,6 +73,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "general-knowledge",
+        "#08BDBD",
+        "theater-masks",
         {
             'fr': "Culture générale",
             'en': "General Knowledge",
@@ -69,6 +83,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "economy",
+        "#FCCA46",
+        "money-bill",
         {
             'fr': "Economie",
             'en': "Economy",
@@ -77,6 +93,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "spanish",
+        "#FB4D3D",
+        "language",
         {
             'fr': "Espagnol",
             'en': "Spanish",
@@ -85,6 +103,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "french",
+        "#FF9914",
+        "language",
         {
             'fr': "Français",
             'en': "French",
@@ -93,6 +113,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "geography",
+        "#247BA0",
+        "globe-americas",
         {
             'fr': "Géographie",
             'en': "Geography",
@@ -101,6 +123,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "geology",
+        "#53A548",
+        "mountain",
         {
             'fr': "Géologie",
             'en': "Geology",
@@ -109,6 +133,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "history",
+        "#D52941",
+        "chess-rook",
         {
             'fr': "Histoire",
             'en': "History",
@@ -117,6 +143,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "italian",
+        "#E67F0D",
+        "language",
         {
             'fr': "Italien",
             'en': "Italian",
@@ -125,6 +153,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "literature",
+        "#7C616C",
+        "book",
         {
             'fr': "Littérature",
             'en': "Litterature",
@@ -133,6 +163,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "logos",
+        "#99582A",
+        "copyright",
         {
             'fr': "Logos",
             'en': "Logos",
@@ -141,6 +173,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "mathematics",
+        "#CC7178",
+        "calculator",
         {
             'fr': "Mathématiques",
             'en': "Mathematics",
@@ -148,6 +182,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
         new Date(Date.now())
       ),
       new Category(
+        "music",
+        "#880D1E",
         "music",
         {
             'fr': "Musique",
@@ -157,6 +193,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "pop-culture",
+        "#89023E",
+        "hat-wizard",
         {
             'fr': "Pop-culture",
             'en': "Pop-culture",
@@ -165,6 +203,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "physics",
+        "#1D3461",
+        "atom",
         {
             'fr': "Physique",
             'en': "Physics",
@@ -173,6 +213,8 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "technology",
+        "#113537",
+        "desktop",
         {
             'fr': "Technologie",
             'en': "Technology",
@@ -181,9 +223,21 @@ const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGat
       ),
       new Category(
         "tv-series",
+        "#D52941",
+        "film",
         {
             'fr': "Séries",
             'en': "TV Series",
+        },
+        new Date(Date.now())
+      ),
+      new Category(
+        "videogames",
+        "#37505C",
+        "gamepad",
+        {
+            'fr': "Jeux Vidéo",
+            'en': "Videogames",
         },
         new Date(Date.now())
       ),

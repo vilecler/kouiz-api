@@ -8,9 +8,13 @@ export class Category implements TimedObject {
   constructor(
     public code: string,
 
+    public color: string,
+    public icon: string,
+
     public names: Translations,
 
     public createdAt: Date,
+    public themeCount: number = 0,
     public isHidden: boolean = false,
 
     public _id?: ObjectId,
