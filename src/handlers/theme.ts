@@ -45,7 +45,7 @@ export const getThemesHandler = async (parameters: any, event: APIGatewayEvent, 
 
   try{
     const query = new Query();
-    query.addField("category", parameters.category);
+    query.addField("categories", parameters.category);
 
     if(displayHidden){ //By default hidden categories are not visible unless isHidden falcutative parameter is used.
       query.displayHiddenResult();
