@@ -83,7 +83,7 @@ export const getQuizzesByThemeHandler = async (parameters: any, event: APIGatewa
       query.displayHiddenResult();
     }
 
-    const quizzes = (await database.collection(QUIZ_COLLECTION).find(query.q).toArray()) as Quiz[];
+    const quizzes = (await database.collection(QUIZ_COLLECTION).find(query.q).sort({ themePosition: 1 }).toArray()) as Quiz[];
 
     if (quizzes.length == 0 ){
       return Responses.generateNoObjectFound('Quizzes');
