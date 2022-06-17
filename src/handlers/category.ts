@@ -48,7 +48,7 @@ export const getCategoriesHandler = async (parameters: any, event: APIGatewayEve
     const categories = (await database.collection(CATEGORY_COLLECTION).find(query.q).toArray()) as Category[];
 
     if (categories.length == 0){
-      return Responses.generateNoObjectFound('Categories');
+      return Responses.generateNoObjectFound('Category');
     }
 
     return Responses.generateSuccess(categories);

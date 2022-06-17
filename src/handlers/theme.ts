@@ -54,7 +54,7 @@ export const getThemesHandler = async (parameters: any, event: APIGatewayEvent, 
     const themes = (await database.collection(THEME_COLLECTION).find(query.q).toArray()) as Theme[];
 
     if (themes.length == 0 ){
-      return Responses.generateNoObjectFound('Themes');
+      return Responses.generateNoObjectFound('Theme');
     }
 
     return Responses.generateSuccess(themes);

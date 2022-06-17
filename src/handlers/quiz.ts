@@ -86,7 +86,7 @@ export const getQuizzesByThemeHandler = async (parameters: any, event: APIGatewa
     const quizzes = (await database.collection(QUIZ_COLLECTION).find(query.q).sort({ themePosition: 1 }).toArray()) as Quiz[];
 
     if (quizzes.length == 0 ){
-      return Responses.generateNoObjectFound('Quizzes');
+      return Responses.generateNoObjectFound('Quiz');
     }
 
     return Responses.generateSuccess(quizzes);
