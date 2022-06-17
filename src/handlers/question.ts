@@ -1,4 +1,4 @@
-mport { APIGatewayProxyResult, APIGatewayEvent, Context } from 'aws-lambda';
+import { APIGatewayProxyResult, APIGatewayEvent, Context } from 'aws-lambda';
 import { Db } from 'mongodb';
 
 import { Question } from "../models/question";
