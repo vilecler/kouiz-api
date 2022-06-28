@@ -37,12 +37,8 @@ export const resolveRoute = async (event: APIGatewayProxyEventV2WithRequestConte
 
   for (let route of loadRoutingItems()) {
     if (route.method == event.requestContext.http.method && route.pattern.match(event.requestContext.http.path, options)) {
-
-      console.log(event);
-      console.log(event.queryStringParameters);
-
       return await route.handler(
-        event.queryStringParameters,
+        route.pattern.match(event.requestContext.http.path),
         event,
         database
       );
