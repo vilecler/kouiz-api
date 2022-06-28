@@ -41,6 +41,9 @@ export const getThemesHandler = async (parameters: any, event: APIGatewayProxyEv
     displayHidden = Boolean(event!.queryStringParameters!.displayHidden);
   }
 
+  console.log('getThemesHandler');
+  console.log(parameters);
+
   if(!parameters.category){
     return Responses.generateMissingParameter('category');
   }
