@@ -1,7 +1,7 @@
 import { MongoClient, Db } from 'mongodb';
 import { AppSettings } from '../config/constants';
 
-let cachedDb: Db;
+let cachedDb: Db; //The database is cached here
 
 export async function connectToDatabase(): Promise<Db> {
   if (cachedDb) {
