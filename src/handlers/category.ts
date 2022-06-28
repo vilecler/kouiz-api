@@ -1,14 +1,15 @@
-import { APIGatewayProxyResult, APIGatewayEvent, Context } from 'aws-lambda';
+import { APIGatewayProxyResult, APIGatewayProxyEventV2WithRequestContext } from 'aws-lambda';
 import { Db } from 'mongodb';
 
 import { Category } from "../models/category";
+import { RequestContext } from "../models/requestcontext";
 
 import { Query } from '../utils/query'
 import { Responses } from "../utils/responses";
 
 const CATEGORY_COLLECTION = "categories";
 
-export const getCategoryHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
+export const getCategoryHandler = async (parameters: any, event: APIGatewayProxyEventV2WithRequestContext<RequestContext>, database: Db): Promise<APIGatewayProxyResult> => {
   if(!parameters.code){
     return Responses.generateMissingParameter("code");
   }
@@ -33,7 +34,7 @@ export const getCategoryHandler = async (parameters: any, event: APIGatewayEvent
 };
 
 
-export const getCategoriesHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
+export const getCategoriesHandler = async (parameters: any, event: APIGatewayProxyEventV2WithRequestContext<RequestContext>, database: Db): Promise<APIGatewayProxyResult> => {
   let displayHidden: boolean = false;
   if (event?.queryStringParameters?.displayHidden){
     displayHidden = Boolean(event!.queryStringParameters!.displayHidden);

@@ -1,6 +1,7 @@
-import { APIGatewayProxyResult, APIGatewayEvent, Context } from 'aws-lambda';
+import { APIGatewayProxyResult, APIGatewayProxyEventV2WithRequestContext } from 'aws-lambda';
 import { Db } from 'mongodb';
 
+import { RequestContext } from "../models/requestcontext";
 import { Theme } from "../models/theme";
 
 import { Query } from "../utils/query";
@@ -8,7 +9,7 @@ import { Responses } from "../utils/responses";
 
 const THEME_COLLECTION = "themes";
 
-export const getThemeHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
+export const getThemeHandler = async (parameters: any, event: APIGatewayProxyEventV2WithRequestContext<RequestContext>, database: Db): Promise<APIGatewayProxyResult> => {
   if(!parameters.code){
     return Responses.generateMissingParameter("code");
   }
@@ -33,7 +34,7 @@ export const getThemeHandler = async (parameters: any, event: APIGatewayEvent, c
 };
 
 
-export const getThemesHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
+export const getThemesHandler = async (parameters: any, event: APIGatewayProxyEventV2WithRequestContext<RequestContext>, database: Db): Promise<APIGatewayProxyResult> => {
   //Retrieve falcutative parameter
   let displayHidden: boolean = false;
   if (event?.queryStringParameters?.displayHidden){

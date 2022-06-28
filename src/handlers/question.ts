@@ -1,14 +1,15 @@
-import { APIGatewayProxyResult, APIGatewayEvent, Context } from 'aws-lambda';
+import { APIGatewayProxyResult, APIGatewayProxyEventV2WithRequestContext } from 'aws-lambda';
 import { Db } from 'mongodb';
 
 import { Question } from "../models/question";
+import { RequestContext } from "../models/requestcontext";
 
 import { Query } from "../utils/query";
 import { Responses } from "../utils/responses";
 
 const QUESTION_COLLECTION = "questions";
 
-export const getQuestionHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
+export const getQuestionHandler = async (parameters: any, event: APIGatewayProxyEventV2WithRequestContext<RequestContext>, database: Db): Promise<APIGatewayProxyResult> => {
   if(!parameters.id){
     return Responses.generateMissingParameter("id");
   }

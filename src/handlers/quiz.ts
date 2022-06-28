@@ -1,14 +1,15 @@
-import { APIGatewayProxyResult, APIGatewayEvent, Context } from 'aws-lambda';
+import { APIGatewayProxyResult, APIGatewayProxyEventV2WithRequestContext } from 'aws-lambda';
 import { Db } from 'mongodb';
 
 import { Quiz } from "../models/quiz";
+import { RequestContext } from "../models/requestcontext";
 
 import { Query } from "../utils/query";
 import { Responses } from "../utils/responses";
 
 const QUIZ_COLLECTION = "quizzes";
 
-export const getQuizHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
+export const getQuizHandler = async (parameters: any, event: APIGatewayProxyEventV2WithRequestContext<RequestContext>, database: Db): Promise<APIGatewayProxyResult> => {
   if(!parameters.link){
     return Responses.generateMissingParameter("link");
   }
@@ -33,7 +34,7 @@ export const getQuizHandler = async (parameters: any, event: APIGatewayEvent, co
 };
 
 
-export const getQuizzesByCodeHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
+export const getQuizzesByCodeHandler = async (parameters: any, event: APIGatewayProxyEventV2WithRequestContext<RequestContext>, database: Db): Promise<APIGatewayProxyResult> => {
   //Retrieve falcutative parameter
   let displayHidden: boolean = false;
   if (event?.queryStringParameters?.displayHidden){
@@ -65,7 +66,7 @@ export const getQuizzesByCodeHandler = async (parameters: any, event: APIGateway
 
 };
 
-export const getQuizzesByThemeHandler = async (parameters: any, event: APIGatewayEvent, context: Context, database: Db): Promise<APIGatewayProxyResult> => {
+export const getQuizzesByThemeHandler = async (parameters: any, event: APIGatewayProxyEventV2WithRequestContext<RequestContext>, database: Db): Promise<APIGatewayProxyResult> => {
   //Retrieve falcutative parameter
   let displayHidden: boolean = false;
   if (event?.queryStringParameters?.displayHidden){
