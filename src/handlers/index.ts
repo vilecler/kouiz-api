@@ -7,7 +7,7 @@ import { resolveRoute } from "../routing/router";
 const handler = async (event: any, context: Context): Promise<APIGatewayProxyResult> => {
     const database: Db = await connectToDatabase();
 
-    print(event);
+    console.log(event);
 
     return await resolveRoute(event, context, database);
 };
