@@ -20,7 +20,7 @@ export class Quiz implements TimedObject{
     public isPremium: boolean,
     public langsAvailable: Array<Lang>,
 
-    public questions: Array<ObjectId>,  //Link to the questions
+    public questions: Array<string>,  //Link to the questions
     public durationBetweenQuestions: number,
 
     public experience: Experience,

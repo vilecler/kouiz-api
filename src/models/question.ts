@@ -14,6 +14,7 @@ export enum QuestionTypes{
 export class Question {
 
   constructor(
+    public code: string,
     public name: Translations,
 
     public type: QuestionTypes,
