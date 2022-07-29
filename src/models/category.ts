@@ -14,7 +14,7 @@ export class Category implements TimedObject {
     public name: Translations,
 
     public createdAt: Date,
-    public themeCount: number = 0,
+    public themesCount: number = 0,
     public isHidden: boolean = false,
 
     public _id?: ObjectId,
