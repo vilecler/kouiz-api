@@ -18,7 +18,7 @@ export class Theme implements TimedObject{
     public shortName: Translations,
 
     public createdAt: Date,
-    public quizCount: number = 0,
+    public quizzesCount: number = 0,
     public isHidden: boolean = false,
 
     public _id?: ObjectId,
