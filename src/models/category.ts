@@ -11,7 +11,7 @@ export class Category implements TimedObject {
     public color: string,
     public icon: string,
 
-    public names: Translations,
+    public name: Translations,
 
     public createdAt: Date,
     public themeCount: number = 0,

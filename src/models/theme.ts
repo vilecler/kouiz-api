@@ -14,8 +14,8 @@ export class Theme implements TimedObject{
 
     public categories: Array<string>, //codes of category go here
 
-    public names: Translations,
-    public shortNames: Translations,
+    public name: Translations,
+    public shortName: Translations,
 
     public createdAt: Date,
     public quizCount: number = 0,
