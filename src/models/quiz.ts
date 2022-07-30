@@ -32,6 +32,7 @@ export class Quiz implements TimedObject{
 
     public theme?: string,   //undefined when the quiz is a community quiz.
     public themePosition?: string, // little label for the position of the quiz within the theme if exists.
+    public themeIndex?: number,
     public creator?: User,//creator is defined when it is a community quiz only
 
     public deletedAt?: Date,
